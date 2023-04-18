@@ -7,7 +7,7 @@ const Indexx = () => {
     const [stateIndex, setIndex] = useState();
 
     function handle(e, itemindex) {
-
+        console.log(e);
         setCheck(!check);
         setIndex(itemindex);
     }
@@ -25,7 +25,13 @@ const Indexx = () => {
                 {
                     stateArray.map((eachObj, index) => {
 
-                        return <li key={index}><input type="checkbox" name="check" id="check-box" onClick={(e) => { handle(!e.target.value, index) }} key={index} /><span>{eachObj}</span>{(check && stateIndex === index) && <button onClick={() => { handleDelete(index) }}>Delete</button>} </li>
+                        return <li key={index}>
+                            <input type="checkbox" name="check" id="check-box" onClick={(e) => { handle(!e.target.value, index) }} key={index} />
+                            <span>{eachObj}</span>
+                            {
+                                (check && stateIndex === index) && <button onClick={() => { handleDelete(index) }}>Delete</button>
+                            }
+                        </li>
                     })
                 }
             </ul>
